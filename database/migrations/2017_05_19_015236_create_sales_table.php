@@ -35,6 +35,7 @@ class CreateSalesTable extends Migration
             $table->integer('appraisal_value')->nullable();
             $table->string('pdf_backup')->nullable();
             $table->integer('sic_format')->nullable();
+            $table->date('sic_format_date')->nullable();
             //Amarillo (Status)
 
             $table->integer('status')->nullable();
@@ -43,6 +44,7 @@ class CreateSalesTable extends Migration
             $table->date('letter_commitment_subsidy_date')->nullable();
             $table->date('credit_record_date')->nullable();
             $table->date('judgment_date')->nullable();
+            $table->integer('freedom_tax')->nullable();
             $table->date('freedom_tax_date')->nullable();
             $table->date('sign_date')->nullable();
             $table->date('deliver_date')->nullable();

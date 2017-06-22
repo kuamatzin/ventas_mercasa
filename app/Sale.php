@@ -25,7 +25,8 @@ class Sale extends Model
         'sign_date',
         'deliver_date',
         'fecha_firma_contrato',
-        'fecha_recepcion'
+        'fecha_recepcion',
+        'sic_format_date'
     ];
 
     protected $casts = [
@@ -40,6 +41,7 @@ class Sale extends Model
         'original_freedom_tax_date',
         'original_sign_date',
         'original_deliver_date',
+        'original_sic_format_date'
     ];
 
 

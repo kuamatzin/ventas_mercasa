@@ -2311,6 +2311,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = {
   props: ['active_sale'],
   components: { CartaCompromiso: _CartaCompromiso2.default, CompraVenta: _CompraVenta2.default, CompraVentaSinEnganche: _CompraVentaSinEnganche2.default },
+  data: function data() {
+    return {
+      new_pregrade_for_sale: ''
+    };
+  },
+
   methods: {
     updateSale: function updateSale() {
       var that = this;
@@ -2324,9 +2330,79 @@ exports.default = {
     },
     updateDate: function updateDate(data) {
       this.active_sale[data.date_type.substring(1, data.date_type.length - 1)] = data.date;
+    },
+    registerNewPregrade: function registerNewPregrade() {
+      var _this = this;
+
+      if (this.new_pregrade_for_sale != '') {
+        axios.put('sales/register_new_pregrade/' + this.active_sale.id, { pregrade: this.new_pregrade_for_sale }).then(function (_ref2) {
+          var data = _ref2.data;
+
+          _this.active_sale.new_pregrade.push(_this.new_pregrade_for_sale);
+          _this.new_pregrade_for_sale = '';
+        }, function (error) {
+          console.log("Error update pregrade");
+        });
+      }
     }
   }
 }; //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -35002,7 +35078,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })], 1)])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-6"
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
@@ -35041,7 +35117,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": "Pendiente"
     }
   }, [_vm._v(" Pendiente")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
@@ -35068,30 +35144,77 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.active_sale.credit = $event.target.value
       }
     }
-  })])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-6"
+  })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
   }, [_vm._m(7), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
-  }, _vm._l((_vm.active_sale.new_pregrade), function(pregrade) {
-    return _c('input', {
-      staticClass: "form-control input-edit",
-      attrs: {
-        "type": "text"
+  }, [_c('a', {
+    staticClass: "btn btn-primary pull-right",
+    attrs: {
+      "data-toggle": "modal",
+      "href": "#precalificaciones"
+    }
+  }, [_vm._v("Precalificación")]), _vm._v(" "), _c('div', {
+    staticClass: "modal fade",
+    attrs: {
+      "id": "precalificaciones"
+    }
+  }, [_c('div', {
+    staticClass: "modal-dialog"
+  }, [_c('div', {
+    staticClass: "modal-content"
+  }, [_vm._m(8), _vm._v(" "), _c('div', {
+    staticClass: "modal-body"
+  }, [_c('h4', [_vm._v("Registrar Precalificación")]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-8"
+  }, [_c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.new_pregrade_for_sale),
+      expression: "new_pregrade_for_sale"
+    }],
+    staticClass: "form-control",
+    attrs: {
+      "required": "required"
+    },
+    domProps: {
+      "value": (_vm.new_pregrade_for_sale)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.new_pregrade_for_sale = $event.target.value
       }
-    })
-  }))])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
+    }
+  })]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('button', {
+    staticClass: "btn btn-primary pull-right",
+    on: {
+      "click": _vm.registerNewPregrade
+    }
+  }, [_vm._v("Guardar")])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h4', [_vm._v("Historial de Precalificaciones")]), _vm._v(" "), _c('ul', {
+    staticClass: "list-group"
+  }, _vm._l((_vm.active_sale.new_pregrade), function(pregrade) {
+    return _c('li', {
+      staticClass: "list-group-item"
+    }, [_vm._v(_vm._s(pregrade))])
+  }))])])])])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(8), _vm._v(" "), _c('div', {
+  }, [_vm._m(9), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input', {
     directives: [{
@@ -35113,15 +35236,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.active_sale.advance = $event.target.value
       }
     }
-  })])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-6"
+  })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(9), _vm._v(" "), _c('div', {
+  }, [_vm._m(10), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input', {
     directives: [{
@@ -35144,12 +35265,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(10), _vm._v(" "), _c('div', {
+  }, [_vm._m(11), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input', {
     directives: [{
@@ -35174,12 +35295,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   })])])])])]), _vm._v(" "), _c('div', {
     staticClass: "row"
   }, [_c('div', {
-    staticClass: "col-md-6"
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(11), _vm._v(" "), _c('div', {
+  }, [_vm._m(12), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input', {
     directives: [{
@@ -35202,12 +35323,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   })])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(12), _vm._v(" "), _c('div', {
+  }, [_vm._m(13), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('select', {
     directives: [{
@@ -35239,15 +35360,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": "2"
     }
-  }, [_vm._v("Recibido")])])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-6"
+  }, [_vm._v("Recibido")])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(13), _vm._v(" "), _c('div', {
+  }, [_vm._m(14), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('select', {
     directives: [{
@@ -35279,13 +35398,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": "2"
     }
-  }, [_vm._v("Recibido")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
+  }, [_vm._v("Recibido")])])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(14), _vm._v(" "), _c('div', {
+  }, [_vm._m(15), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input', {
     directives: [{
@@ -35307,15 +35428,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.active_sale.pdf_backup = $event.target.value
       }
     }
-  })])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "row"
-  }, [_c('div', {
-    staticClass: "col-md-6"
+  })])])])]), _vm._v(" "), _c('div', {
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(15), _vm._v(" "), _c('div', {
+  }, [_vm._m(16), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('select', {
     directives: [{
@@ -35352,12 +35471,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "value": "3"
     }
   }, [_vm._v("Entregado")])])])])])]), _vm._v(" "), _c('div', {
-    staticClass: "col-md-6"
+    staticClass: "col-md-4"
   }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(16), _vm._v(" "), _c('div', {
+  }, [_vm._m(17), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('select', {
     directives: [{
@@ -35405,11 +35524,51 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "value": "6"
     }
-  }, [_vm._v("Fecha Entrega")])])])])])])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+  }, [_vm._v("Fecha Entrega")])])])])])])]), _vm._v(" "), _c('div', {
+    staticClass: "row"
+  }, [_c('div', {
+    staticClass: "col-md-4"
+  }, [_c('div', {
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(17), _vm._v(" "), _c('div', {
+  }, [_vm._m(18), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('select', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.active_sale.freedom_tax),
+      expression: "active_sale.freedom_tax"
+    }],
+    staticClass: "form-control input-edit",
+    attrs: {
+      "name": "status"
+    },
+    on: {
+      "change": function($event) {
+        var $$selectedVal = Array.prototype.filter.call($event.target.options, function(o) {
+          return o.selected
+        }).map(function(o) {
+          var val = "_value" in o ? o._value : o.value;
+          return val
+        });
+        _vm.active_sale.freedom_tax = $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+      }
+    }
+  }, [_c('option', {
+    attrs: {
+      "value": "1"
+    }
+  }, [_vm._v("Recibido")]), _vm._v(" "), _c('option', {
+    attrs: {
+      "value": "2"
+    }
+  }, [_vm._v("Entregado")])])])])])])])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('div', {
+    staticClass: "edit"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_vm._m(19), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input-fecha', {
     attrs: {
@@ -35423,7 +35582,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(18), _vm._v(" "), _c('div', {
+  }, [_vm._m(20), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input-fecha', {
     attrs: {
@@ -35437,7 +35596,21 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(19), _vm._v(" "), _c('div', {
+  }, [_vm._m(21), _vm._v(" "), _c('div', {
+    staticClass: "col-md-8"
+  }, [_c('input-fecha', {
+    attrs: {
+      "date_type": "'sic_format_date'",
+      "original_date": _vm.active_sale.original_sic_format_date
+    },
+    on: {
+      "updateDate": _vm.updateDate
+    }
+  })], 1)])]), _vm._v(" "), _c('div', {
+    staticClass: "edit"
+  }, [_c('div', {
+    staticClass: "row"
+  }, [_vm._m(22), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input-fecha', {
     attrs: {
@@ -35451,7 +35624,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(20), _vm._v(" "), _c('div', {
+  }, [_vm._m(23), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input-fecha', {
     attrs: {
@@ -35465,7 +35638,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(21), _vm._v(" "), _c('div', {
+  }, [_vm._m(24), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input-fecha', {
     attrs: {
@@ -35479,7 +35652,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "edit"
   }, [_c('div', {
     staticClass: "row"
-  }, [_vm._m(22), _vm._v(" "), _c('div', {
+  }, [_vm._m(25), _vm._v(" "), _c('div', {
     staticClass: "col-md-8"
   }, [_c('input-fecha', {
     attrs: {
@@ -35505,7 +35678,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     on: {
       "click": _vm.updateSale
     }
-  }, [_vm._v("Guardar")])])])])])])
+  }, [_vm._v("Guardar")])])])])])
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "modal-header"
@@ -35549,6 +35722,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('label', [_vm._v("Nueva Precalificación: ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
+    staticClass: "modal-header"
+  }, [_c('button', {
+    staticClass: "close",
+    attrs: {
+      "type": "button",
+      "data-dismiss": "modal",
+      "aria-hidden": "true"
+    }
+  }, [_vm._v("×\n                                ")]), _vm._v(" "), _c('h4', {
+    staticClass: "modal-title"
+  }, [_vm._v("Precalificaciones")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
     staticClass: "col-md-4"
   }, [_c('label', [_vm._v("Anticipo: ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -35586,11 +35772,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-4"
+  }, [_c('label', [_vm._v("Libertad de gravamen: ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-4"
   }, [_c('label', [_vm._v("Carta Compromiso Fecha: ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-4"
   }, [_c('label', [_vm._v("Constancia Crédito Fecha: ")])])
+},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "col-md-4"
+  }, [_c('label', [_vm._v("Formato SIC Fecha: ")])])
 },function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
     staticClass: "col-md-4"

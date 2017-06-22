@@ -66,7 +66,7 @@
                 <br>
                 <hr>
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -82,7 +82,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -94,22 +94,52 @@
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
                           <label>Nueva Precalificación: </label>
                         </div>
                         <div class="col-md-8">
-                          <input type="text" class="form-control input-edit" v-for="pregrade in active_sale.new_pregrade">
+                          <a class="btn btn-primary pull-right" data-toggle="modal" href="#precalificaciones">Precalificación</a>
+                          <div class="modal fade" id="precalificaciones">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+                                  </button>
+                                  <h4 class="modal-title">Precalificaciones</h4>
+                                </div>
+                                <div class="modal-body">
+                                  <h4>Registrar Precalificación</h4>
+                                  <div class="row">
+                                    <div class="col-md-8">
+                                      <input class="form-control"
+                                             required="required" v-model="new_pregrade_for_sale">
+                                    </div>
+                                    <div class="col-md-4">
+                                      <button class="btn btn-primary pull-right" @click="registerNewPregrade">Guardar</button>
+                                    </div>
+                                  </div>
+
+                                  <hr>
+                                  <h4>Historial de Precalificaciones</h4>
+                                  <ul class="list-group">
+                                    <li class="list-group-item" v-for="pregrade in active_sale.new_pregrade">{{pregrade}}</li>
+                                  </ul>
+                                </div>
+                              </div><!-- /.modal-content -->
+                            </div><!-- /.modal-dialog -->
+                          </div><!-- /.modal -->
+                          <!--<input type="text" class="form-control input-edit" v-for="pregrade in active_sale.new_pregrade">-->
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -121,10 +151,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -136,7 +163,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -151,7 +178,7 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -163,7 +190,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -178,10 +205,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-
-                <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -196,7 +220,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -208,11 +235,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
-
-
-                <div class="row">
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -228,7 +251,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                     <div class="edit">
                       <div class="row">
                         <div class="col-md-4">
@@ -249,7 +272,25 @@
                   </div>
                 </div>
 
-                <br>
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="edit">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label>Libertad de gravamen: </label>
+                        </div>
+                        <div class="col-md-8">
+                          <select name="status" class="form-control input-edit" v-model="active_sale.freedom_tax">
+                            <option value="1">Recibido</option>
+                            <option value="2">Entregado</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+
                 <hr>
 
                 <div class="edit">
@@ -278,6 +319,21 @@
                     </div>
                   </div>
                 </div>
+
+                <div class="edit">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <label>Formato SIC Fecha: </label>
+                    </div>
+                    <div class="col-md-8">
+                      <input-fecha @updateDate="updateDate" date_type="'sic_format_date'" :original_date="active_sale.original_sic_format_date"></input-fecha>
+                      <!--
+                      <input type="text" class="form-control input-edit" v-model="active_sale.credit_record_date">
+                      -->
+                    </div>
+                  </div>
+                </div>
+
                 <div class="edit">
                   <div class="row">
                     <div class="col-md-4">
@@ -370,6 +426,11 @@
   export default {
     props: ['active_sale'],
     components: { CartaCompromiso, CompraVenta, CompraVentaSinEnganche },
+    data(){
+      return {
+        new_pregrade_for_sale: ''
+      }
+    },
     methods: {
       updateSale() {
         let that = this;
@@ -383,6 +444,18 @@
       },
       updateDate(data){
         this.active_sale[data.date_type.substring(1, data.date_type.length-1)] = data.date;
+      },
+      registerNewPregrade(){
+        if(this.new_pregrade_for_sale != ''){
+          axios.put('sales/register_new_pregrade/' + this.active_sale.id, {pregrade: this.new_pregrade_for_sale}).then(
+              ({data}) => {
+                this.active_sale.new_pregrade.push(this.new_pregrade_for_sale)
+                this.new_pregrade_for_sale = ''
+              }, error => {
+                console.log("Error update pregrade")
+              }
+          );
+        }
       }
     }
   }

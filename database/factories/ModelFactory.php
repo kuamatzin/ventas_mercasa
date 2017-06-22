@@ -67,8 +67,8 @@ $factory->define(App\Sale::class, function (Faker\Generator $faker) {
         'saving' => random_int(20000, 40000),
         'contract_number' => random_int(10000, 500000),
         'commission' => random_int(1500, 6000),
-        'case_file' => random_int(1, 3),
-        'appraisal_value' => random_int(1, 3),
+        'case_file' => random_int(1, 2),
+        'appraisal_value' => random_int(1, 2),
         'pdf_backup' => $pdf[random_int(0, 1)],
         'sic_format' => random_int(1, 3),
         'status' => random_int(1, 6),
@@ -97,7 +97,9 @@ $factory->define(App\Sale::class, function (Faker\Generator $faker) {
         'fecha_firma_contrato' => $faker->date($format = 'Y-m-d', $max = 'now'),
         'documento_identificacion' => 'IFE',
         'lugar_recepcion' => $faker->state,
-        'fecha_recepcion' =>  $faker->date($format = 'Y-m-d', $max = 'now')
+        'fecha_recepcion' =>  $faker->date($format = 'Y-m-d', $max = 'now'),
+        'sic_format_date' =>  $faker->date($format = 'Y-m-d', $max = 'now'),
+        'freedom_tax' => 1
     ];
 });
 

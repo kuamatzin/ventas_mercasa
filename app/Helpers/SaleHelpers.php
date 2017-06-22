@@ -52,6 +52,11 @@ trait SaleHelpers {
         return $this->getOriginal('freedom_tax_date');
     }
 
+    public function getOriginalSicFormatDateAttribute()
+    {
+        return $this->getOriginal('sic_format_date');
+    }
+
     public function getOriginalSignDateAttribute()
     {
         return $this->getOriginal('sign_date');

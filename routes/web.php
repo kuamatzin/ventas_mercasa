@@ -11,6 +11,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('projects', 'ProjectController');
 Route::get('sales/avaliable/{project_id}', 'SaleController@avaliableApartments');
+Route::put('sales/register_new_pregrade/{sale}', 'SaleController@registerNewPregrade');
 Route::resource('sales', 'SaleController');
 Route::resource('apartments', 'ApartmentController');
 
