@@ -99,7 +99,8 @@ $factory->define(App\Sale::class, function (Faker\Generator $faker) {
         'lugar_recepcion' => $faker->state,
         'fecha_recepcion' =>  $faker->date($format = 'Y-m-d', $max = 'now'),
         'sic_format_date' =>  $faker->date($format = 'Y-m-d', $max = 'now'),
-        'freedom_tax' => 1
+        'freedom_tax' => 1,
+        'recibos' => []
     ];
 });
 

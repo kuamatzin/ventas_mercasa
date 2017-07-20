@@ -63,6 +63,13 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'recibos' => [
+            'driver' => 'local',
+            'root'   => public_path() . '/recibos',
+            'url' => env('APP_URL').'/public',
+            'visibility' => 'public',
+        ]
+
     ],
 
 ];

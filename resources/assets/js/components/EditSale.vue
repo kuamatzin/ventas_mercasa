@@ -125,13 +125,14 @@
                                   <hr>
                                   <h4>Historial de Precalificaciones</h4>
                                   <ul class="list-group">
-                                    <li class="list-group-item" v-for="pregrade in active_sale.new_pregrade">{{pregrade}}</li>
+                                    <li class="list-group-item" v-for="(pregrade, index) in active_sale.new_pregrade">
+                                      <precalificacion :pregrade="pregrade" :index="index" :sale_id="active_sale.id" @pregradeDeleted="pregradeDeleted(index)"></precalificacion>
+                                    </li>
                                   </ul>
                                 </div>
                               </div><!-- /.modal-content -->
                             </div><!-- /.modal-dialog -->
                           </div><!-- /.modal -->
-                          <!--<input type="text" class="form-control input-edit" v-for="pregrade in active_sale.new_pregrade">-->
                         </div>
                       </div>
                     </div>
@@ -288,6 +289,18 @@
                       </div>
                     </div>
                   </div>
+                  <div class="col-md-4">
+                    <div class="edit">
+                      <div class="row">
+                        <div class="col-md-4">
+                          <label>Recibos: </label>
+                        </div>
+                        <div class="col-md-8">
+                          <button class="btn btn-warning pull-right" data-toggle="modal" href="#historial-recibos">Historial de Recibos</button>
+                          <historial-recibos :sale_id="active_sale.id" :recibos="active_sale.recibos"></historial-recibos>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -422,10 +435,12 @@
   import CartaCompromiso from './CartaCompromiso.vue';
   import CompraVenta from './CompraVenta.vue';
   import CompraVentaSinEnganche from './CompraVentaSinEnganche.vue';
+  import Precalificacion from './Precalificacion.vue';
+  import HistorialRecibos from './HistorialRecibos.vue';
 
   export default {
     props: ['active_sale'],
-    components: { CartaCompromiso, CompraVenta, CompraVentaSinEnganche },
+    components: { CartaCompromiso, CompraVenta, CompraVentaSinEnganche, Precalificacion, HistorialRecibos },
     data(){
       return {
         new_pregrade_for_sale: ''
@@ -456,6 +471,18 @@
               }
           );
         }
+      },
+      deletePregrade(index) {
+        axios.put('sales/deletePregrade/' + this.active_sale.id, {index: index}).then(
+            ({data}) => {
+              this.active_sale.new_pregrade.splice(ind, 1)
+            }, error => {
+              console.log("Error delete pregrade")
+            }
+        );
+      },
+      pregradeDeleted(ind){
+        this.active_sale.new_pregrade.splice(ind, 1)
       }
     }
   }

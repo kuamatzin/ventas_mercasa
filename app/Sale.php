@@ -26,11 +26,12 @@ class Sale extends Model
         'deliver_date',
         'fecha_firma_contrato',
         'fecha_recepcion',
-        'sic_format_date'
+        'sic_format_date',
     ];
 
     protected $casts = [
-        'new_pregrade' => 'array'
+        'new_pregrade' => 'array',
+        'recibos' => 'array'
     ];
 
     protected $appends = [

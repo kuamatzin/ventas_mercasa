@@ -75,6 +75,9 @@ class CreateSalesTable extends Migration
             $table->string('lugar_recepcion')->nullable();
             $table->date('fecha_recepcion')->nullable();
 
+            //Recibos
+            $table->text('recibos')->nullable();
+
             $table->timestamps();
         });
     }

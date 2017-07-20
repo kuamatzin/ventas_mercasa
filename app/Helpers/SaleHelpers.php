@@ -15,8 +15,6 @@ trait SaleHelpers {
         return ucfirst(Date::createFromFormat('Y-m-d H:i:s', $date)->toFormattedDateString());
     }
 
-
-
     public function getLetterCommitmentSubsidyDateAttribute($value)
     {
         return $this->transformDate($value);
