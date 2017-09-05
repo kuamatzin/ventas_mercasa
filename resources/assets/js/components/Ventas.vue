@@ -14,7 +14,7 @@
             <th v-if="details">Contrato Agua</th>
             <th v-if="details">Crédito</th>
             <th v-if="details">Nueva Precalificación</th>
-            <th v-if="details">Anticipo</th>
+            <th v-if="details">Apartado</th>
             <th v-if="details">Ahorro</th>
             <th v-if="details">Número de contrato</th>
             <th v-if="details">Comisión</th>

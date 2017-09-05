@@ -14,8 +14,8 @@
     <td v-if="details">{{sale.case_file}}</td>
     <td v-if="details">{{sale.appraisal_value}}</td>
     <td v-if="details">{{sale.pdf_backup}}</td>
-    <td v-if="details">{{sale.sic_format}}</td>
-    <td v-if="details">{{sale.status}}</td>
+    <td v-if="details">{{sale.sic_format_formated}}</td>
+    <td v-if="details">{{sale.statuses}}</td>
     <td v-if="details">{{sale.letter_commitment_subsidy_date}}</td>
     <td v-if="details">{{sale.credit_record_date}}</td>
     <td v-if="details">{{sale.judgment_date}}</td>

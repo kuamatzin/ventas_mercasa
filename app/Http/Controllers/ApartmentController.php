@@ -25,7 +25,7 @@ class ApartmentController extends Controller
 
     public function update(Apartment $apartment, Request $request)
     {
-        $data = array_except($request->apartment, ['id', 'project_id', 'created_at', 'updated_at']);
+        $data = array_except($request->apartment, ['id', 'project_id', 'created_at', 'updated_at', 'credit_type_formated']);
         $apartment->update($data);
 
         return "true";

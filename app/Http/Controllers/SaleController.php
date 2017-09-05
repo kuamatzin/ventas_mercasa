@@ -39,7 +39,7 @@ class SaleController extends Controller
      */
     public function update(Sale $sale, Request $request)
     {
-        $data = array_except($request->sale, ['id', 'apartment_id', 'created_at', 'updated_at', 'original_client_birthdate', 'original_letter_commitment_subsidy_date', 'original_credit_record_date', 'original_judgment_date', 'original_freedom_tax_date', 'original_sign_date', 'original_deliver_date', 'original_sic_format_date']);
+        $data = array_except($request->sale, ['id', 'apartment_id', 'created_at', 'updated_at', 'original_client_birthdate', 'original_letter_commitment_subsidy_date', 'original_credit_record_date', 'original_judgment_date', 'original_freedom_tax_date', 'original_sign_date', 'original_deliver_date', 'original_sic_format_date', 'sic_format_formated', 'statuses']);
 
         $sale->update($data);
 

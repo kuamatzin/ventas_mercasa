@@ -162,7 +162,7 @@
         axios.get('/sales/avaliable/' + project_id).then(data => this.avaliable_apartments = data.data);
       },
       updatedApartmentToProject() {
-        this.getAvaliableApartments(this.active_project_id);
+        this.displayApartments();
       }
     }
   }

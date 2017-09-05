@@ -7,9 +7,12 @@
         <option value="Apartado"> Apartado</option>
       </select>
     </td>
-    <td @click="editing = true" v-if="editing == false">{{apartment.credit_type}}</td>
+    <td @click="editing = true" v-if="editing == false">{{apartment.credit_type_formated}}</td>
     <td v-else>
-      <input type="text" class="form-control" v-model="apartment.credit_type">
+      <select class="form-control" v-model="apartment.credit_type">
+        <option value="1">Crédito Infonavit</option>
+        <option value="2"> Crédito Foviste</option>
+      </select>
     </td>
     <td @click="editing = true" v-if="editing == false">{{apartment.walker}}</td>
     <td v-else>

@@ -42,7 +42,9 @@ class Sale extends Model
         'original_freedom_tax_date',
         'original_sign_date',
         'original_deliver_date',
-        'original_sic_format_date'
+        'original_sic_format_date',
+        'sic_format_formated',
+        'statuses'
     ];
 
 
@@ -80,20 +82,41 @@ class Sale extends Model
         }
     }
 
-    public function getStatusesAttribute($value)
+    public function getStatusesAttribute()
     {
-        if ($value == 1) {
+        if ($this->attributes['status'] == 1) {
             return "Carta Compromiso";
-        } elseif ($value == 2) {
+        } elseif ($this->attributes['status'] == 2) {
             return "Constancia de Crédito";
-        } elseif ($value == 3) {
+        } elseif ($this->attributes['status'] == 3) {
             return "Dictaminación";
-        } elseif ($value == 4) {
+        } elseif ($this->attributes['status'] == 4) {
             return "Libertad de Gravamen";
-        } elseif ($value == 5) {
+        } elseif ($this->attributes['status'] == 5) {
             return "Fecha de Firma";
         } else {
             return "Fecha de Entrega";
+        }
+    }
+
+    public function getSicFormatFormatedAttribute()
+    {
+        switch ($this->attributes['sic_format']) {
+            case 1:
+                return "Sin recibir";
+                break;
+            
+            case 2:
+                return "Recibido";
+                break;
+            
+            case 3:
+                return "Entregado";
+                break;
+            
+            default:
+                return "Otro";
+                break;
         }
     }
 

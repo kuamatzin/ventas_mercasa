@@ -35,7 +35,7 @@
     },
     methods: {
       seeApartmentModal() {
-        alert("HOLA")
+        //alert("HOLA")
       },
       updatedApartment() {
         this.$emit('updatedApartmentToProject');
